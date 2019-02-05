@@ -25,11 +25,14 @@ cd blog-example
 ATOMで *1day_intern* フォルダをみてみましょう。
 *blog-example* というフォルダが作成され、その中に *app, bin, config...* などのファイルが作成されているはずです。  
 
-/Gemfileの20行目に下記を記述してください。
+/Gemfileの19行目~20行目に下記を記述してください。
 ```
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 ```
-
+/Gemfileの42行目を下記の通りに修正してください。
+```
+gem 'sqlite3', '1.3.13'
+```
 Windows Powershellで下記のコマンドを実行します。      
 このコマンドだけでほとんどのページが作成されてしまう恐ろしいコマンドです。
 ```
@@ -437,7 +440,7 @@ https://qiita.com/shunhikita/items/772b81a1cc066e67930e
 
 
 ## TOPページの修正
-### TOPページに記事のtitle, writer, memberOnly, showボタンのみの一覧を表示するようにしてみましょう。
+### TOPページに記事のtitle,writer,memberOnly,showボタン4カラムの中身の一覧をTOPページに表示するようにしてみましょう
 /app/views/articles/index.html.erb, /app/controllers/articles_controller.rbを参考にしてみましょう。
 
 
