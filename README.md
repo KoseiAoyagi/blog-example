@@ -29,7 +29,7 @@ ATOMで *1day_intern* フォルダをみてみましょう。
 ```
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 ```
-/Gemfileの42行目を下記の通りに修正してください。
+/Gemfileの12行目を下記の通りに修正してください。
 ```
 gem 'sqlite3', '1.3.13'
 ```
