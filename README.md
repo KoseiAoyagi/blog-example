@@ -12,7 +12,7 @@ Windows Powershellが表示されたら下記のコマンドを入力してく�
 cd 1day_intern
 ```
 
-ATOMで *1day_intern* フォルダを開いてみましょう。
+Visual Studio Code(VSCode)で *1day_intern* フォルダを開いてみましょう。
 
 ## Rails基盤作成
 ### Railsの枠組みを作成してみましょう。    
@@ -22,7 +22,7 @@ Railsの枠組みを作成するコマンドです。
 rails new blog-example --skip-bundle
 cd blog-example
 ```
-ATOMで *1day_intern* フォルダをみてみましょう。
+Visual Studio Code(VSCode)で *1day_intern* フォルダをみてみましょう。
 *blog-example* というフォルダが作成され、その中に *app, bin, config...* などのファイルが作成されているはずです。  
 
 /Gemfileの19行目~20行目に下記を記述してください。
@@ -41,7 +41,7 @@ rails g scaffold User name:string email:string password_digest:string created_at
 rails g scaffold Article title:string writer:string contents:text memberOnly:boolean created_at:date updated_at:date
 ```
 
-ATOMで *blog-example* フォルダをみてみましょう。
+Visual Studio Code(VSCode)で *blog-example* フォルダをみてみましょう。
 *app/controllers, app/models, app/views* 配下に必要なフォルダ、ファイルが作成されているはずです。  
 
 
@@ -328,7 +328,7 @@ Articleをログインしていないと作成できないようにしていま�
 before_action :require_sign_in!, only: [:new, :create, :edit, :update, :destroy]
 ```
 
-/app/model/article.rbの```class Blog < ApplicationRecord```と```end```の間に下記を追加してください。  
+/app/model/article.rbの```class Article < ApplicationRecord```と```end```の間に下記を追加してください。  
 ログイン状況に応じた記事を取り出す処理になります。
 ```
 def self.getArticles(isMember = false)
@@ -440,7 +440,7 @@ https://qiita.com/shunhikita/items/772b81a1cc066e67930e
 
 
 ## TOPページの修正
-### TOPページに記事のtitle,writer,memberOnly,showボタン4カラムの中身の一覧をTOPページに表示するようにしてみましょう
+### TOPページに記事の[title],[writer],[memberOnly],[showボタン]の4カラムの中身の一覧をTOPページに表示するようにしてみましょう
 /app/views/articles/index.html.erb, /app/controllers/articles_controller.rbを参考にしてみましょう。
 
 
