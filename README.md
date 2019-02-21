@@ -441,8 +441,11 @@ https://qiita.com/shunhikita/items/772b81a1cc066e67930e
 
 ## TOPページの修正
 ### TOPページに記事の[title],[writer],[memberOnly],[showボタン]の4カラムの中身の一覧をTOPページに表示するようにしてみましょう
+
 /app/views/articles/index.html.erb, /app/controllers/articles_controller.rbを参考にしてみましょう。
 
+<img src="https://github.com/KoseiAoyagi/blog-example/blob/modify-readme/before.png" width="600px">
+<img src="https://github.com/KoseiAoyagi/blog-example/blob/modify-readme/after.png" width="600px">
 
 ## デザイン
 ### ページが味気ないのでデザインをしてみましょう。
