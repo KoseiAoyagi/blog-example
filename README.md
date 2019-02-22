@@ -20,6 +20,8 @@ Windows Powershellで下記のコマンドを入力してください。
 Railsの枠組みを作成するコマンドです。
 ```
 rails new blog-example --skip-bundle
+```
+```
 cd blog-example
 ```
 Visual Studio Code(VSCode)で *1day_intern* フォルダをみてみましょう。
@@ -33,11 +35,21 @@ gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 ```
 gem 'sqlite3', '1.3.13'
 ```
-Windows Powershellで下記のコマンドを実行します。      
+Windows Powershellで下記のコマンドを実行します。
+
+### 必ず1つずつ実行してください
+
 このコマンドだけでほとんどのページが作成されてしまう恐ろしいコマンドです。
+
+※注意
+コマンドライン上に#が表示されるまで待機してください。
 ```
 bundle install --path /usr/local/src/bundles/blog-example
+```
+```
 rails g scaffold User name:string email:string password_digest:string created_at:date updated_at:date
+```
+```
 rails g scaffold Article title:string writer:string contents:text memberOnly:boolean created_at:date updated_at:date
 ```
 
@@ -78,7 +90,7 @@ has_secure_password validations: true
 ```
 <div class="field">
   <%= f.label :password_digest %>
-  <%= f.text_field :password_digest, id: :user_password_digest %>
+  <%= f.text_field :password_digest %>
 </div>
 
 ↓
