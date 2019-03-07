@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.getArticles(signed_in?)
+    @articles = Article.getArticles(signed_in?).order(params[:sort])
   end
 
   # GET /articles/1
