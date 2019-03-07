@@ -5,12 +5,12 @@
 <table class="table">
   <thead>
     <tr>
-      <th>タイトル</th>
-      <th>ユーザー</th>
+      <th><%= link_to 'タイトル', sort: 'title' %></th>
+      <th><%= link_to 'ユーザー', sort: 'writer' %></th>
       <th>内容</th>
       <th>限定記事</th>
-      <th>作成日時</th>
-      <th>更新日時</th>
+      <th><%= link_to '作成日時', sort: 'created_at' %></th>
+      <th><%= link_to '更新日時', sort: 'updated_at' %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
