@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
+  
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  # ログインしないとArticleを作成できないようにする
   before_action :require_sign_in!, only: [:new, :create, :edit, :update, :destroy]
+  # 自分以外のユーザーがeditやdestroyができないようにする
+  before_action :ensure_current_user, only: [:edit, :destroy]
 
   # GET /articles
   # GET /articles.json
@@ -29,7 +33,7 @@ class ArticlesController < ApplicationController
     @article.writer = @current_user.name
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'News was successfully created.' }
+        format.html { redirect_to @article, notice: '記事の作成が完了しました' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -43,7 +47,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to @article, notice: '記事の更新が完了しました' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
@@ -55,9 +59,14 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
+    @article = Article.find(params[:id])
+    if @article.writer != @current_user.name
+      flash[:danger] = "権限がありません"
+      redirect_to("/articles")
+    end 
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to articles_url, notice: '記事の削除が完了しました' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +79,14 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :contents, :memberOnly, :created_at, :updated_at)
+      params.require(:article).permit(:title, :writer, :contents, :memberOnly, :created_at, :updated_at)
+    end
+
+    def ensure_current_user
+      @article = Article.find(params[:id])
+      if @article.writer != @current_user.name
+        flash[:danger] = "権限がありません"
+        redirect_to("/articles")
+      end
     end
 end

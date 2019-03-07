@@ -1,7 +1,7 @@
-<%= form_with(model: article, local: true) do |form| %>
+<%= form_for(article) do |f| %>
   <% if article.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <h2><%= pluralize(article.errors.count, "") %> 件のエラーがあります</h2>
 
       <ul>
       <% article.errors.full_messages.each do |message| %>
@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :article_title, class: "form-control"%>
+  <div class="form-group">
+    <%= f.label :タイトル %>
+    <%= f.text_field :title, :size => "10", :class => 'form-control'%>
   </div>
 
-  <div class="field form-group">
-    <%= form.label :contents %>
-    <%= form.text_area :contents, id: :article_contents, class: "form-control"%>
+  <div class="form-group">
+    <%= f.label :内容 %>
+    <%= f.text_area :contents, :class => 'form-control' %>
   </div>
 
-  <div class="field form-group">
-    <%= form.label :memberOnly %>
-    <%= form.check_box :memberOnly, id: :article_memberOnly, class: "form-control" %>
+  <div class="form-group">
+    <%= f.label :限定記事 %>
+    <%= f.check_box :memberOnly %>
   </div>
 
-  <div class="actions form-group">
-    <%= form.submit class: "btn btn-primary"%>
+  <div class="actions">
+     <%= f.button :投稿, :class => 'btn btn-primary' %>
   </div>
 <% end %>

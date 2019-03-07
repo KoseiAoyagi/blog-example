@@ -1,7 +1,11 @@
 class User < ApplicationRecord
-  has_secure_password validations: true
-  validates :name, presence:true
-  validates :email, presence: true
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+
+    # password暗号化設定
+    has_secure_password validations: true
+
+    # name, emailのnullチェック
+    validates :name, presence:true, length: { maximum: 50 }
+
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    validates :email, presence: true, length: { maximum: 100 }, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 end
